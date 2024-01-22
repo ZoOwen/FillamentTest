@@ -12,6 +12,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire\TemporaryUploadedFile;
 
 class ProductResource extends Resource
 {
@@ -39,7 +40,9 @@ class ProductResource extends Resource
                     ])
                     ->required(),
                 Forms\Components\FileUpload::make('img_url')
-                    ->required(),
+                ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
+                    return (string) str($file->getClientOriginalName())->prepend('custom-prefix-');
+                })
             ]);
     }
 
