@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Livewire\TemporaryUploadedFile;
 
+
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
@@ -23,27 +24,32 @@ class ProductResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('price')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Select::make('category')
-                    ->options([
-                        '1' => 'Food',
-                        '2' => 'Drinks',
-                        '3' => 'Health',
-                        '4' => 'Pets',
-                        '5' => 'Tools',
-                    ])
-                    ->required(),
-                Forms\Components\FileUpload::make('img_url')
-                ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
-                    return (string) str($file->getClientOriginalName())->prepend('custom-prefix-');
-                })
-            ]);
+    ->schema([
+        Forms\Components\TextInput::make('name')
+            ->required()
+            ->maxLength(255),
+        Forms\Components\TextInput::make('price')
+            ->required()
+            ->maxLength(255),
+        Forms\Components\Select::make('category')
+            ->options([
+                '1' => 'Food',
+                '2' => 'Drinks',
+                '3' => 'Health',
+                '4' => 'Pets',
+                '5' => 'Tools',
+            ])
+            ->required(),
+        Forms\Components\FileUpload::make('img_url')
+            ->store(function (UploadedFile $file, $disk, $path) {
+                // You can customize the file storage logic here
+                $filename = Str::random(40) . '.' . $file->getClientOriginalExtension();
+                $file->storeAs($path, $filename, $disk);
+                return $filename;
+            }),
+    ]);
+
+
     }
 
     public static function table(Table $table): Table
