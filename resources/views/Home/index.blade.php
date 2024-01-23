@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Bootstrap-ecommerce by Vosidiy">
 <title>{{env('APP_NAME')}}</title>
-<link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/logos/squanchy.jpg')}}" >
-<link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/images/logos/squanchy.jpg')}}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets/images/logos/squanchy.jpg')}}">
+<link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/logos/DE-GROSIR.PNG')}}" >
+<link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/images/logos/DE-GROSIR.PNG')}}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets/images/logos/DE-GROSIR.PNG')}}">
 <!-- jQuery -->
 <!-- Bootstrap4 files-->
 <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -37,7 +37,7 @@
 <div class="row align-items-center">
 	<div class="col-lg-3">
 	<div class="brand-wrap">
-		<img class="logo" src="assets/images/logos/squanchy.jpg">
+		<img class="logo" src="assets/images/logos/DE-GROSIR.PNG">
 		<h2 class="logo-text">{{env('APP_NAME')}}</h2>
 	</div> <!-- brand-wrap.// -->
 	</div>
@@ -210,7 +210,7 @@ function addItemToTable(id, name, price) {
             <tr data-id="${id}"  >
                 <td>
                     <figure class="media">
-                        <div class="img-wrap"><img src="assets/images/items/3.jpg" class="img-thumbnail img-xs"></div>
+
                         <figcaption class="media-body">
                             <h6 class="title text-truncate">${name}</h6>
                         </figcaption>
