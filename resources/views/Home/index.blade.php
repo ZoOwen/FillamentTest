@@ -89,7 +89,9 @@
 	<figure class="card card-product">
 		<span class="badge-new"> NEW </span>
 		<div class="img-wrap">
-			<img src="assets/images/items/3.jpg">
+        <img src="{{ asset('storage/' . $prod->img_url) }}">
+
+
 			<a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
 		</div>
 		<figcaption class="info-wrap">

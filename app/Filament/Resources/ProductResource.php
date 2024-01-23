@@ -13,7 +13,7 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Livewire\TemporaryUploadedFile;
-
+use Filament\Forms\Components\FileUpload;
 
 class ProductResource extends Resource
 {
@@ -24,32 +24,26 @@ class ProductResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-    ->schema([
-        Forms\Components\TextInput::make('name')
-            ->required()
-            ->maxLength(255),
-        Forms\Components\TextInput::make('price')
-            ->required()
-            ->maxLength(255),
-        Forms\Components\Select::make('category')
-            ->options([
-                '1' => 'Food',
-                '2' => 'Drinks',
-                '3' => 'Health',
-                '4' => 'Pets',
-                '5' => 'Tools',
-            ])
-            ->required(),
-        Forms\Components\FileUpload::make('img_url')
-            ->store(function (UploadedFile $file, $disk, $path) {
-                // You can customize the file storage logic here
-                $filename = Str::random(40) . '.' . $file->getClientOriginalExtension();
-                $file->storeAs($path, $filename, $disk);
-                return $filename;
-            }),
-    ]);
-
-
+            ->schema([
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('price')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Select::make('category')
+                    ->options([
+                        '1' => 'Food',
+                        '2' => 'Drinks',
+                        '3' => 'Health',
+                        '4' => 'Pets',
+                        '5' => 'Tools',
+                    ])
+                    ->required(),
+                    Forms\Components\FileUpload::make('img_url')
+                    ->disk('public')
+                    ->directory('assets/images/product')
+            ]);
     }
 
     public static function table(Table $table): Table
