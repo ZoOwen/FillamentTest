@@ -36,7 +36,9 @@ Route::post('/store-transaction', [ProductController::class, 'storeTransaction']
 Route::get('/report', [ReportController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('report');
-
+Route::get('/download-report/{reportId}', [ReportController::class, 'downloadReport'])
+    ->middleware(['auth', 'verified'])
+    ->name('download.report');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

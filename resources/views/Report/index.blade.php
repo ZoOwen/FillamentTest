@@ -93,19 +93,16 @@
                <tr>
                <td>1</td>
                 <td>Hasil Penjualan Perbulan</td>
-                <td><a href="#">Download</a></td>
+                <td><a href="/download-report/1" >Download</a></td>
                </tr>
-
-               <tr>
                <td>2</td>
-                <td>Laporan Barang Terlaris</td>
-                <td><a href="#">Download</a></td>
+                <td>Hasil Semua Penjualan</td>
+                <td><a href="/download-report/2" >Download</a></td>
                </tr>
-
                <tr>
                <td>3</td>
-                <td>Laporan Barang Dengan stok tipis (dibawah 20)</td>
-                <td><a href="#">Download</a></td>
+                <td>Laporan Barang Terlaris</td>
+                <td><a href="/download-report/3">Download</a></td>
                </tr>
 
         </tbody>
@@ -131,6 +128,19 @@
 	$("#cart").height(445);
 	$("#cart").overlayScrollbars({ });
 });
+
+function downloadReport(reportId) {
+        // Perform an AJAX request to download the report
+        fetch(`/download-report/${reportId}`)
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response data (e.g., trigger file download)
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
 </script>
 </body>
 </html>
