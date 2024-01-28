@@ -48,11 +48,14 @@
 		<div class="widgets-wrap d-flex justify-content-end">
 			<div class="widget-header">
 				<a href="#" class="icontext">
-					<a href="#" class="btn btn-primary m-btn m-btn--icon m-btn--icon-only">
+					<a href="/" class="btn btn-primary m-btn m-btn--icon m-btn--icon-only">
 															<i class="fa fa-home"></i>
 														</a>
-                                                        <a href="#" class="btn btn-primary m-btn m-btn--icon m-btn--icon-only">
+                                                        <a href="/report" class="btn btn-primary m-btn m-btn--icon m-btn--icon-only">
 															<i class="fa fa-book"></i>
+														</a>
+                                                        <a href="/admin" class="btn btn-primary m-btn m-btn--icon m-btn--icon-only">
+															<i class="fa fa-bars"></i>
 														</a>
 				</a>
 			</div> <!-- widget .// -->

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,12 @@ Route::get('/', [ProductController::class, 'index'])
 Route::post('/store-transaction', [ProductController::class, 'storeTransaction'])
 ->middleware(['auth', 'verified'])
 ->name('store.transaction');
+
+//Laporan
+Route::get('/report', [ReportController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('report');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
